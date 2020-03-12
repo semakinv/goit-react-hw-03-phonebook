@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './ContactForm.module.css';
+import { inputForm } from './ContactForm.module.css';
+
 export default class ContactForm extends Component {
   static propTypes = {
     onAddContact: PropTypes.func.isRequired,
@@ -26,7 +27,6 @@ export default class ContactForm extends Component {
   };
 
   render() {
-    const { inputForm } = styles;
     return (
       <>
         <form className={inputForm} onSubmit={this.handleSubmit}>
@@ -34,6 +34,7 @@ export default class ContactForm extends Component {
             {' '}
             <p>Name</p>
             <input
+              required
               type="text"
               value={this.state.name}
               onChange={this.handleInputCange}
@@ -44,6 +45,9 @@ export default class ContactForm extends Component {
             {' '}
             <p>Number</p>
             <input
+              required
+              placeholder="(097)111-11-11"
+              pattern="[0-9 + -/(/)]+"
               type="text"
               value={this.state.number}
               onChange={this.handleInputCange}
