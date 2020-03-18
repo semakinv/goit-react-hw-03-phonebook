@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { inputForm } from './ContactForm.module.css';
+import { inputForm, addButton, inputLabel } from './ContactForm.module.css';
 
 export default class ContactForm extends Component {
   static propTypes = {
@@ -32,7 +32,7 @@ export default class ContactForm extends Component {
         <form className={inputForm} onSubmit={this.handleSubmit}>
           <label>
             {' '}
-            <p>Name</p>
+            <p className={inputLabel}>Name</p>
             <input
               required
               type="text"
@@ -43,7 +43,7 @@ export default class ContactForm extends Component {
           </label>
           <label>
             {' '}
-            <p>Number</p>
+            <p className={inputLabel}> Number</p>
             <input
               required
               placeholder="(097)111-11-11"
@@ -55,7 +55,9 @@ export default class ContactForm extends Component {
             />
           </label>
           <section>
-            <button type="submit">Add contact</button>
+            <button className={addButton} type="submit">
+              Add contact
+            </button>
           </section>
         </form>
       </>

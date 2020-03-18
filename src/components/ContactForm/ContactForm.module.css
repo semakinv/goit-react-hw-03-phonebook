@@ -1,0 +1,18 @@
+.inputForm {
+  border: 1px solid;
+  padding: 10px;
+  width: 50%;
+}
+.addButton {
+  border-radius: 5px;
+  border-width: 1px;
+  margin-top: 10px;
+}
+
+.addButton:hover {
+  background-color: #2684ff;
+}
+
+.inputLabel {
+  margin-bottom: 5px;
+}

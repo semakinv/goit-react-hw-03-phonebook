@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
+import ContactList from './ContactList/ContactList';
 import { shell } from './App.module.css';
 
 export default class App extends Component {
@@ -10,6 +10,21 @@ export default class App extends Component {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const existedContactsInStorage = localStorage.getItem('contacts');
+    if (existedContactsInStorage) {
+      const contacts = JSON.parse(existedContactsInStorage);
+      this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
 
   addContact = (name, number) => {
     const contact = {
